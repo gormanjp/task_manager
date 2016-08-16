@@ -3,6 +3,8 @@
 <input placeholder="Make A New List!">
 
 <ul>
-	<li>List One</li>
+	<% @lists.each do |list| %>
+		<a href="<%= list_path(list) %>"><li><%= list.name %> </li></a>
+	<% end %>
 </ul>
 
