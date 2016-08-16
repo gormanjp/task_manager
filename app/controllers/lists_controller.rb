@@ -12,11 +12,10 @@ class ListsController < ApplicationController
 
 	def create
 		@list = List.new(list_params)
-		binding.pry
-		@list.name = params[:list][:name]
+		
 		@list.save
-
-		redirect_to root_path
+		@lists = List.all
+		render :index 
 	end
 
 	private
