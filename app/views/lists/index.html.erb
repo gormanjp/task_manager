@@ -1,10 +1,12 @@
 <h1>Task Lists</h1>
 
-<input placeholder="Make A New List!">
+<%= form_for(@list) do |f| %>
+	<%= f.text_field :name, placeholder: "Make A New List" %>
+<% end %>
 
 <ul>
 	<% @lists.each do |list| %>
-		<a href="<%= list_path(list) %>"><li><%= list.name %> </li></a>
+		<li><%= link_to list.name, list_path(list) %></li>
 	<% end %>
 </ul>
 
