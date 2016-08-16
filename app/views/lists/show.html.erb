@@ -1,9 +1,12 @@
 <h3><%= @list.name %></h3>
 
-<% form_for(@task) do |f| %>
-	
-<% end %>
+
+	<%= form_for([@list, @task]) do |f| %> <!-- nested form for task associated with current list-->
+		<%= f.text_field :name, placeholder: "New Task" %> <br>
+	<% end %>
 
 <ul>
-	Tasks will end up listed here
+	<% @list.tasks.each do |task| %>
+		<a href="#"><li><%= task.name %></li></a>
+	<% end %>
 </ul>

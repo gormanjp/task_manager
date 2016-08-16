@@ -6,11 +6,13 @@ class ListsController < ApplicationController
 	end
 
 	def show
-		@list = List.find_by(params[:id])
+		@list = List.find_by_id(params[:id])
+		@task = @list.tasks.build
 	end
 
 	def create
 		@list = List.new(list_params)
+		binding.pry
 		@list.name = params[:list][:name]
 		@list.save
 
