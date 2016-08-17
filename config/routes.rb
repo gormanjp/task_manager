@@ -2,10 +2,10 @@ Rails.application.routes.draw do
   get 'tasks/create'
 
   resources :lists do 
-    resources :tasks
+    resources :tasks ,only: [:index, :new, :create]
   end
 
-
+  resources :tasks, only: [:show, :edit, :update, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -8,6 +8,10 @@ class TasksController < ApplicationController
   	redirect_to list_path(@list)
   end
 
+  def show
+  	@task = Task.find_by_id(params[:id])
+  end
+
 private
 	def task_params
 		params.require(:task).permit(:name)
