@@ -1,3 +1,5 @@
 <h1>Task Show</h1>
 
 <h3><%= @task.name %></h3>
+
+<%= link_to "back to #{@list.name} list", list_path(@list) %>

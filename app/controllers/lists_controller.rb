@@ -5,17 +5,19 @@ class ListsController < ApplicationController
 		@lists = List.all
 	end
 
-	def show
-		@list = List.find_by_id(params[:id])
-		@tasks = @list.tasks
+	def show #this is where tasks are created
+		@list = List.find_by_id(params[:id]) 
 		@task = Task.new
 	end
 
 	def create
 		@list = List.new(list_params)
-		@list.save
 		@lists = List.all
-		render :index 
+		if @list.save
+			redirect_to lists_path
+		else 
+			render :index
+		end
 	end
 
 	private

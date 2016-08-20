@@ -2,15 +2,16 @@
 
 <h3><%= @list.name %></h3>
 
-
 	<%= form_for([@list, @task]) do |f| %> <!-- nested form for task associated with current list-->
 		<%= f.text_field :name, placeholder: (@task.errors.full_messages_for(:name).first || 'Task Name') %>
 	<% end %>
 
 <ul>
-	<% if @tasks %>
-		<% @tasks.each do |task| %>
-			<li><%= link_to task.name, task_path(task) %></li>
+
+		<% @list.tasks.each do |task| %>
+			<% if task.id %>
+				<li><%= link_to task.name, task_path(task) %></li> 
+			<% end %>
 		<% end %>
-	<% end %>
+
 </ul>

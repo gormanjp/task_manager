@@ -7,12 +7,13 @@ class TasksController < ApplicationController
   	if @task.save
   		redirect_to task_path(@task)
   	else
-  		render 'lists/show'
+  		render "lists/show"
   	end
   end
 
   def show
   	@task = Task.find_by_id(params[:id])
+  	@list = @task.list
   end
 
 private
