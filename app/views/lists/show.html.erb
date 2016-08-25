@@ -10,7 +10,7 @@
 
 		<% @list.tasks.each do |task| %>
 			<% if task.id %>
-				<li>
+				<li class="<%= 'completed' if task.complete? %>">
 					<input type="checkbox">
 					<%= link_to task.name, task_path(task) %>	
 				</li> 

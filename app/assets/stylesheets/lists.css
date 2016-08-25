@@ -2,3 +2,7 @@
 .field_with_errors input {
 	border: 1px solid red;
 }
+
+.completed {
+	text-decoration: line-through;
+}
