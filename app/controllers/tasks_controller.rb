@@ -12,7 +12,11 @@ class TasksController < ApplicationController
   end
 
   def update
-  	binding.pry
+  	@task = Task.find(params[:id])
+  	@list = @task.list
+  	@task.complete = params[:task][:complete]
+  	@task.save
+  	redirect_to list_path(@list)
   end
 
   def show
