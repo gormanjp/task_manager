@@ -11,6 +11,10 @@ class TasksController < ApplicationController
   	end
   end
 
+  def update
+  	binding.pry
+  end
+
   def show
   	@task = Task.find_by_id(params[:id])
   	@list = @task.list

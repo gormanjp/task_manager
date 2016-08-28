@@ -11,8 +11,10 @@
 		<% @list.tasks.each do |task| %>
 			<% if task.id %>
 				<li class="<%= 'completed' if task.complete? %>">
-					<input type="checkbox" <%= "checked = checked"  if task.complete? %>>
-					<%= link_to task.name, task_path(task) %>	
+				<%= form_for(task) do |f| %>
+					<input class="check" type="checkbox" <%= "checked = checked"  if task.complete? %>>
+					<%= link_to task.name, task_path(task) %>
+				<% end %>	
 				</li> 
 			<% end %>
 		<% end %>
