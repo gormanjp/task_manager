@@ -14,8 +14,7 @@ class TasksController < ApplicationController
   def update
   	@task = Task.find(params[:id])
   	@list = @task.list
-  	@task.complete = params[:task][:complete]
-  	@task.save
+  	@task.update(task_params)
   	redirect_to list_path(@list)
   end
 
@@ -26,7 +25,7 @@ class TasksController < ApplicationController
 
 private
 	def task_params
-		params.require(:task).permit(:name)
+		params.require(:task).permit(:name, :complete)
 	end	
 
 end
