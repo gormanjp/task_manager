@@ -1,0 +1,8 @@
+<% if task.id %>
+	<li class="<%= 'completed' if task.complete? %>">
+		<%= form_for(task) do |f| %>
+			<%= f.check_box :complete, class: "check", checked: (true if task.complete?) %>
+			<%= link_to task.name, task_path(task) %>
+		<% end %>	
+	</li> 
+<% end %>

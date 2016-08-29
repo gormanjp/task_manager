@@ -1,22 +1,12 @@
 <h1>List Show</h1>
 
 <h3><%= @list.name %></h3>
-
 	<%= form_for([@list, @task]) do |f| %> <!-- nested form for task associated with current list-->
 		<%= f.text_field :name, placeholder: (@task.errors.full_messages_for(:name).first || 'Task Name') %>
 	<% end %>
 
 <ul>
-
-		<% @list.tasks.each do |task| %>
-			<% if task.id %>
-				<li class="<%= 'completed' if task.complete? %>">
-				<%= form_for(task) do |f| %>
-					<%= f.check_box :complete, class: "check", checked: (true if task.complete?) %>
-					<%= link_to task.name, task_path(task) %>
-				<% end %>	
-				</li> 
-			<% end %>
-		<% end %>
-
+	<% @list.tasks.each do |task| %>
+			<%= render partial: "tasks/task_li", locals: {task: task}  %>
+	<% end %>
 </ul>
