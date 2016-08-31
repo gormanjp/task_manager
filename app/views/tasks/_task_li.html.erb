@@ -1,8 +1,6 @@
-<% if task.id %>
-		<%= content_tag_for :li, task, class: li_class_for_task(task) do %>
-			<%= form_for(task) do |f| %>
-				<%= f.check_box :complete, class: "check", checked: task.complete? %>
-				<%= link_to task.name, task_path(task) %>
-			<% end %>
-		<% end %>
+<%= li_for_task(task) do%>
+	<%= form_for(task) do |f| %>
+		<%= f.check_box :complete, class: "check", checked: task.complete? %>
+		<%= link_to task.name, task_path(task) %>
+	<% end %>
 <% end %>
