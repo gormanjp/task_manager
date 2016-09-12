@@ -23,6 +23,13 @@ class TasksController < ApplicationController
   	@list = @task.list
   end
 
+  def destroy
+  	@task = Task.find(params[:id])
+  	@list = @task.list
+  	@task.destroy
+  	redirect_to list_path(@list)
+  end
+
 private
 	def task_params
 		params.require(:task).permit(:name, :complete)

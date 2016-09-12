@@ -3,4 +3,7 @@
 		<%= f.check_box :complete, class: "check", checked: task.complete? %>
 		<%= link_to task.name, task_path(task) %>
 	<% end %>
+
+	<%= button_to 'Delete', task_path(task), method: :delete %>
+	
 <% end %>
